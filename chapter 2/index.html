@@ -1,0 +1,84 @@
+<html>
+	<head>
+		<style>
+			.success {
+				background-color: green;
+			}
+			.section {
+				margin-top: 30%;
+			}
+		</style>
+		<script type="text/javascript">
+			function amount() {
+				var number = Number(prompt("Type some number: ", ""));
+				if (!isNaN(number)) {   //Sprawdza, czy argument nie ma wartości NaN ("nie-liczba").
+					alert("Result: " + (number * number));
+				}
+				else alert("Cannot compute expression!");
+			}
+
+			var name;
+
+			function check() {
+				name = String(prompt("Type your name:", ""));
+				if (name !== undefined && name === 'Karol') {
+					alert("Login with success!!!");
+					document.getElementById("alarm").innerHTML = "<p class=\"success\">Login with success</p>";
+
+				}
+				else {
+					alert("You are not owner of this computer!\nGet out from here!");
+					document.getElementById("alarm").innerHTML = "<p>Alarm! Hacker is trying to still your data!!!</p>";
+				}
+			}
+
+			var isMouseEntered;
+
+			function changeState() {
+				console.log('Mouse entered!');
+				if (isMouseEntered) {
+					document.getElementById("about").innerHTML = "Mouse entered!";
+					document.getElementById("about").style.color = "green";
+					isMouseEntered = !isMouseEntered;
+				} else {
+					document.getElementById("about").innerHTML = "Mouse changed state again!";
+					document.getElementById("about").style.color = "red";
+					isMouseEntered = !isMouseEntered;
+				}
+			}
+
+			function randomNumbers(random) {
+				var li = document.createElement("li");
+				var txt = document.createTextNode(random());
+				li.appendChild(txt);
+				document.getElementById("list").appendChild(li);
+			}
+
+			function randomFormat() {
+				let result = 50;
+				while(result > 49) {
+					result = Math.random() * 100;
+				}
+
+				result = String(result);
+				return result.substring(0, 2);
+			}
+
+		</script>
+	</head>
+	<body>
+		<button onclick="check()">Click here to exec script!</button>
+		<div style="background-color: red; color: white;" id="alarm"></div>
+		<div>
+			<p id="about" onmouseenter="changeState()">This field is listening!</p>
+		</div>
+
+		<div class="section">
+			<p>Loops demo</p>
+			<button onclick="randomNumbers(randomFormat)">Random demo</button>
+			<ul id="list">
+				
+			</ul>
+		</div>	
+	</body>
+</html>
